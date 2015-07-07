@@ -1,7 +1,25 @@
 <div id="BodyDefault" data-ng-if="!Utils.isHomepage() || !node.homepage" data-ng-class="Utils.classExtension()">
-  <div id="PrivacyBadgeBox" data-ng-if="Utils.showPrivacyBadge()" data-ng-include="'views/partials/privacybadge.html'"></div>
-  <div id="HeaderBox" data-ng-if="!embedded" data-ng-include="'views/partials/header.html'"></div>
   <div id="MessagesConsoleBox" data-ng-include="'views/partials/messageconsole.html'"></div>
+
+  <div id="PrivacyBadgeBox" data-ng-if="Utils.showPrivacyBadge()" data-ng-include="'views/partials/privacybadge.html'"></div>
+  <div id="HeaderBox" data-ng-if="!embedded && !Utils.isHomepage()" data-ng-include="'views/partials/header.html'"></div>
+
+  <div data-ng-if="!embedded && Utils.isHomepage()" id="HeaderBoxHome">
+    <div id="HeaderBoxContent">
+       <div>
+         <center>
+           <a href="/#/"><img src="/static/logo_homepage.png" class="img-rounded"></a>
+         </center>
+       </div>
+       <br />
+       <center>
+         <div><h1>ALLERTA ANTICORRUZIONE | ALAC</h1></div>
+         <div><h2>RICEZIONE E GESTIONE DELLE SEGNALAZIONI DI CASI DI CORRUZIONE</h2></div>
+       </center>
+     </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
 
   <div id="ContentBox" class="container-fluid">
     <a id="top"></a>
