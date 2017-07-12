@@ -92,7 +92,11 @@ class OnionService(ServiceJob):
             if self.print_startup_error:
                 # Print error only on first run or failure or on a failure subsequent to a success condition
                 self.print_startup_error = False
+<<<<<<< 340905d52f0c35a0c5241b2db69dbc12cb3dadf9
                 log.err('Failed to initialize Tor connection; error: %s' % err)
+=======
+                log.err('Failed to initialize Tor connection; error: %s', err) # pylint: disable=too-many-arguments
+>>>>>>> Silence pylint warning on log.err
 
             restart_deferred.callback(None)
 
