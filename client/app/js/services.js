@@ -548,6 +548,9 @@ factory("Access", ["$q", "Authentication", function ($q, Authentication) {
   factory('AdminShorturlResource', ['GLResource', function(GLResource) {
     return new GLResource('admin/shorturls/:id', {id: '@id'});
 }]).
+  factory('AdminTenantResource', ['GLResource', function(GLResource) {
+    return new GLResource('admin/tenants/:id', {id: '@id'});
+}]).
   factory('AdminUserResource', ['GLResource', function(GLResource) {
     return new GLResource('admin/users/:id', {id: '@id'});
 }]).
@@ -601,8 +604,8 @@ factory('AdminAcmeResource', ['GLResource', function(GLResource) {
 factory('AdminTLSCfgFileResource', ['GLResource', function(GLResource) {
     return new GLResource('admin/config/tls/files/:name', {name: '@name'});
 }]).
-factory('AdminUtils', ['AdminContextResource', 'AdminQuestionnaireResource', 'AdminStepResource', 'AdminFieldResource', 'AdminFieldTemplateResource', 'AdminUserResource', 'AdminReceiverResource', 'AdminNodeResource', 'AdminNotificationResource', 'AdminShorturlResource',
-    function(AdminContextResource, AdminQuestionnaireResource, AdminStepResource, AdminFieldResource, AdminFieldTemplateResource, AdminUserResource, AdminReceiverResource, AdminNodeResource, AdminNotificationResource, AdminShorturlResource) {
+factory('AdminUtils', ['AdminContextResource', 'AdminQuestionnaireResource', 'AdminStepResource', 'AdminFieldResource', 'AdminFieldTemplateResource', 'AdminUserResource', 'AdminReceiverResource', 'AdminNodeResource', 'AdminNotificationResource', 'AdminShorturlResource', 'AdminTenantResource',
+    function(AdminContextResource, AdminQuestionnaireResource, AdminStepResource, AdminFieldResource, AdminFieldTemplateResource, AdminUserResource, AdminReceiverResource, AdminNodeResource, AdminNotificationResource, AdminShorturlResource, AdminTenantResource) {
   return {
     new_context: function() {
       var context = new AdminContextResource();
@@ -745,7 +748,11 @@ factory('AdminUtils', ['AdminContextResource', 'AdminQuestionnaireResource', 'Ad
 
     new_shorturl: function () {
       return new AdminShorturlResource();
-    }
+    },
+
+    new_tenant: function() {
+      return new AdminTenantResource();
+    },
   };
 }]).
   factory('UserPreferences', ['GLResource', function(GLResource) {
