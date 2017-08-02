@@ -8,12 +8,14 @@ from globaleaks.handlers.base import BaseHandler
 from globaleaks.models import Tenant
 from globaleaks.orm import transact
 from globaleaks.rest import requests
+from globaleaks.security import generateRandomKey
 
 
 def serialize_tenant(tenant):
     return {
         'id': tenant.id,
-        'label': tenant.label
+        'label': tenant.label,
+        'wizard_url': tenant.create_wizard_url(),
     }
 
 
@@ -21,6 +23,8 @@ def db_create(store, desc):
     tenant = Tenant(desc)
 
     store.add(tenant)
+
+    tenant.wizard_token = generateRandomKey(32)
 
     # required to generate/retrive the id
     store.flush()

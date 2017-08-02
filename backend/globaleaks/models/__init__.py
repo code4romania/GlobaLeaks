@@ -4,6 +4,7 @@ ORM Models definitions.
 """
 from __future__ import absolute_import
 
+import urlparse
 from datetime import timedelta
 from storm.locals import Bool, Int, Reference, ReferenceSet, Unicode, Storm, JSON
 
@@ -197,8 +198,15 @@ class Tenant(Model):
     label = Unicode(validator=shorttext_v, default=u'')
     active = Bool(default=True)
     creation_date = DateTime(default_factory=datetime_now)
+    wizard_token = Unicode()
 
     unicode_keys = ['label']
+
+    def create_wizard_url(self):
+        base = GLSettings.memory_copy.hostname
+        if base == '': base = '127.0.0.1:8082'
+        query = 'token=' + self.wizard_token
+        return urlparse.urlunsplit(('http', base, '#/wizard', query, ''))
 
 
 class User(ModelWithID):

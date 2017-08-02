@@ -28,7 +28,7 @@
         <form id="tenant-{{$index}}" name="editTenant" data-ng-controller="TenantEditorCtrl" novalidate>
           <div class="configItem">
             <div class="editorHeader row">
-              <div class="col-md-6">
+              <div class="col-md-9">
                 <div class="editorHeaderTitle">
                   <span data-translate>Label</span>: {{tenant.label}}
                   <span>ID: {{tenant.id}}</span>
@@ -39,8 +39,10 @@
                     data-ng-click="toggleActivation()"
                     data-translate>Active</span>
                 </div>
+                <label data-translate>Activiation URL</label>
+                <a ng-href="{{ tenant.wizard_url }}" ng-bind="tenant.wizard_url | limitTo : 45"></a>...
               </div>
-              <div class="col-md-6">
+              <div class="col-md-3">
                   <span class="pull-right">
                     <button class="actionButton actionButtonDelete btn btn-xs btn-danger"
                       data-ng-hide="isRemovableTenant(tenant)" data-ng-click="delete_tenant(tenant); $event.stopPropagation();"
