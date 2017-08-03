@@ -4,6 +4,8 @@
 #   *****
 # Implementation of the Tenant handlers
 #
+from twisted.internet.defer import inlineCallbacks
+
 from globaleaks.handlers.base import BaseHandler
 from globaleaks.models import Tenant
 from globaleaks.orm import transact
@@ -44,6 +46,11 @@ def db_get_tenant_list(store):
 @transact
 def get_tenant_list(store):
     return db_get_tenant_list(store)
+
+
+@transact
+def get(store, tid):
+    return serialize_tenant(Tenant.get(store, id=tid))
 
 
 @transact
@@ -91,3 +98,6 @@ class TenantInstance(BaseHandler):
                                         requests.AdminTenantDesc)
 
         return update(int(tenant_id), request)
+
+    def get(self, tenant_id):
+        return get(tid=int(tenant_id))
