@@ -4,8 +4,6 @@
 #   *****
 # Implementation of the Tenant handlers
 #
-from twisted.internet.defer import inlineCallbacks
-
 from globaleaks.handlers.base import BaseHandler
 from globaleaks.models import Tenant
 from globaleaks.orm import transact
