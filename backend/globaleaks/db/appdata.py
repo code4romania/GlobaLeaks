@@ -1,6 +1,7 @@
 # -*- coding: UTF-8
 # datainit.py: database initialization
 #   ******************
+
 import os
 
 from storm.expr import And, Not, In
@@ -37,7 +38,6 @@ def load_default_questionnaires(store):
             s = models.db_forge_obj(store, models.Step, step)
             s.questionnaire_id = q.id
             db_import_fields(store, s, None, f_children)
-
 
 
 def load_default_fields(store):
