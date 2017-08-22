@@ -84,14 +84,18 @@ text.axis-worktime {
 }
 
 
-.file-picker input[type='file'] {
+.file-picker input[type='file'],
+#ImportQuestionnaireBtn input[type='file']
+{
   visibility: hidden;
   position: absolute;
   width: 1px;
   height: 1px;
 }
 
-.https-file-res input[type="file"] {
+.https-file-res input[type="file"],
+#ImportQuestionnaireBtn input[type='file']
+{
   display: none;
 }
 
