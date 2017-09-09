@@ -552,7 +552,7 @@ var GLClient = angular.module('GLClient', [
     $rootScope.init = function () {
       return PublicResource.get(function(result, getResponseHeaders) {
         if (result.node.homepage) {
-          $templateCache.put('custom_homepage.html', atob(result.node.homepage));
+          $templateCache.put('custom_homepage.html', b64DecodeUnicode(result.node.homepage));
         }
 
         $rootScope.answer = {value: null};
@@ -791,3 +791,13 @@ var GLClient = angular.module('GLClient', [
    };
 }]).
   config(exceptionConfig);
+  
+
+/* global atob*/
+function b64DecodeUnicode(str) {
+    // Going backwards: from bytestream, to percent-encoding, to original string.
+    return decodeURIComponent(atob(str).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+}
+
