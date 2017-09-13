@@ -27,7 +27,6 @@ body {
 
 .container-fluid {
   width: 95%;
-  margin: 0;
 }
 
 #ContentBox {
@@ -83,7 +82,7 @@ table {
 
 #HeaderBox {
   color: #FFF;
-  background: #428bca;
+  background: #003166 ;
   border-bottom: 1px solid #357ebd;
 }
 
@@ -111,6 +110,10 @@ table {
   padding-right: 1em;
 }
 
+#TitleBox {
+  clear: both;
+}
+
 html[dir="rtl"] #LogoBox,
 html[dir="rtl"] #TitleBox,
 html[dir="rtl"] #UserBox  {
@@ -123,14 +126,13 @@ html[dir="rtl"] #UserBox  {
 }
 
 #PageTitle {
-  font-size: 2em;
   font-weight: bold;
   white-space: pre-wrap;
+  font-family: 'Monda', sans-serif;
 }
 
 #PageSubtitle {
-  font-size: 2em;
-  font-weight: bold;
+  font-family: 'Monda', sans-serif;
 }
 
 #PageTitle, #PageSubtitle, #PageSubtitleSeparator {
@@ -418,4 +420,8 @@ html[dir="rtl"] #UserBox  {
   font-weight: bold;
   padding: 15px;
   margin-bottom: 10px;
+}
+
+.mw-900 {
+  max-width: 900px;
 }

@@ -521,6 +521,17 @@ var GLClient = angular.module('GLClient', [
         keyboard: false
       });
     };
+    
+    $rootScope.open_credits_modal = function () {
+       $uibModal.open({
+        templateUrl: 'views/partials/credits.html',
+        controller: 'ModalCtrl',
+        size: 'lg',
+        scope: $rootScope,
+        backdrop: 'static',
+        keyboard: false
+      });
+    }
 
     $rootScope.evaluateConfidentialityModalOpening = function () {
       if (!Test && // NOTE used by protractor
@@ -531,6 +542,7 @@ var GLClient = angular.module('GLClient', [
 
         $rootScope.confidentiality_warning_opened = true;
         $rootScope.open_confidentiality_modal();
+        $rootScope.open_credits_modal();
         return true;
       }
 
