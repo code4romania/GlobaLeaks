@@ -542,10 +542,19 @@ var GLClient = angular.module('GLClient', [
 
         $rootScope.confidentiality_warning_opened = true;
         $rootScope.open_confidentiality_modal();
-        $rootScope.open_credits_modal();
         return true;
       }
 
+      return false;
+    }
+    
+    $rootScope.evaluateCreditsModalOpening = function () {
+      // we only open the credits modal on first visit
+      if(window.localStorage.getItem('firstVisit') === null) {
+        $rootScope.open_credits_modal();
+        window.localStorage.setItem('firstVisit', true);
+        return true;
+      }
       return false;
     }
 
@@ -643,6 +652,7 @@ var GLClient = angular.module('GLClient', [
         }
 
         $rootScope.evaluateConfidentialityModalOpening();
+        $rootScope.evaluateCreditsModalOpening();
 
         $rootScope.started = true;
       }).$promise;
